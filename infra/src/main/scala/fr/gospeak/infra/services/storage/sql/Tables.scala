@@ -123,6 +123,13 @@ object Tables {
     sort = Seq("answered_at"),
     search = Seq("answer")).get
 
+  val voteProposals: Table = Table.from(
+    name = "vote_proposals",
+    prefix = "vp",
+    fields = Seq("proposal_id", "user_id", "vote", "voted_at"),
+    sort = Seq("voted_at"),
+    search = Seq()).get
+
   val comments: Table = Table.from(
     name = "comments",
     prefix = "co",

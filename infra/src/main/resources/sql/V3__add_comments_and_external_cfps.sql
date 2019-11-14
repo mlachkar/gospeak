@@ -43,3 +43,12 @@ CREATE TABLE external_cfps
 CREATE INDEX external_cfps_close_idx ON external_cfps (close);
 CREATE INDEX external_cfps_location_lat_idx ON external_cfps (location_lat);
 CREATE INDEX external_cfps_location_lng_idx ON external_cfps (location_lng);
+
+CREATE TABLE vote_proposals
+(
+    proposal_id CHAR(36)    NOT NULL REFERENCES proposals (id),
+    user_id     CHAR(36)    NOT NULL REFERENCES users (id),
+    vote        INT         NOT NULL,
+    voted_at    TIMESTAMP   NOT NULL,
+    PRIMARY KEY (proposal_id, user_id)
+);
